@@ -1,9 +1,10 @@
 {
-  "name": "ls",
+  "name": "link-to-button",
   "version": "1.0.0",
   "description": "GitHub Action that replaces links with buttons",
   "main": "dist/index.js",
   "scripts": {
+    "prepare": "npm install",
     "test": "echo \"No test specified\""
   },
   "repository": {
