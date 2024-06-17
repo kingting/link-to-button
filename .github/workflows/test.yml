@@ -43,3 +43,14 @@ jobs:
 
     - name: Print Updated Content
       run: cat index.md
+
+    - name: Verify Output
+      run: |
+        #!/bin/bash
+        set -e
+        if grep -q '<button data-script-name="Run Script"' index.md && grep -q 'fetchAndDisplayScript' index.md; then
+          echo "Test passed: Button and script are present in index.md"
+        else
+          echo "Test failed: Button and/or script are missing in index.md" >&2
+          exit 1
+        fi
