@@ -34,12 +34,12 @@ jobs:
         input-file: 'README.md'
         output-file: 'index.md'
     
-    # Tested only in GitHub Pages
+    # Work in GitHub Pages
     - name: Enable Button Functionality
-        run: |
-          echo "<script>" >> index.md
-          cat dist/script.js >> index.md
-          echo "</script>" >> index.md
+      run: |
+        echo "<script>" >> index.md
+        cat dist/script.js >> index.md
+        echo "</script>" >> index.md
 
     - name: Print Updated Content
       run: cat index.md
