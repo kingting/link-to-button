@@ -1,0 +1,38 @@
+name: Test Link-to-Button Action
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Create a sample README file
+      run: |
+        echo "# Sample Project" > README.md
+        echo "" >> README.md
+        echo "This is a sample project to demonstrate the link-to-button GitHub Action." >> README.md
+        echo "" >> README.md
+        echo "<!-- Start Button -->" >> README.md
+        echo "[Run Script](https://github.com/user/repo/blob/main/script.sh)" >> README.md
+        echo "<!-- End Button -->" >> README.md
+
+    - name: Run Link-to-Button Action
+      uses: ./
+      with:
+        input-file: 'README.md'
+        output-file: 'index.md'
+
+    - name: Print Updated Content
+      run: cat index.md
