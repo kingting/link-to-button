@@ -27,6 +27,9 @@ jobs:
         echo "<!-- Start Button -->" >> README.md
         echo "[Run Script](https://github.com/user/repo/blob/main/script.sh)" >> README.md
         echo "<!-- End Button -->" >> README.md
+        echo "<!-- Start Button -->" >> README.md
+        echo "[Run Script2](https://github.com/user/repo/blob/main/script2.sh)" >> README.md
+        echo "<!-- End Button -->" >> README.md
 
     - name: Run Link-to-Button Action
       uses: ./
