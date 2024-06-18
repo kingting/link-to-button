@@ -124,6 +124,124 @@ function fetchAndDisplayScript(elementId, url, button) {
 }
 </script>
 ```
+## Maintaining the Action Repository
+
+### Setting Up `package.json`
+
+1. **Create `package.json`:**
+   ```bash
+   npm init
+   ```
+
+2. **Install Dependencies:**
+   ```bash
+   npm install --save-dev typescript @vercel/ncc prettier eslint jest @types/jest ts-jest
+   npm install @actions/core dotenv
+   ```
+
+3. **Configure `package.json`:**
+   ```json
+   {
+     "name": "link-to-button",
+     "version": "1.0.0",
+     "description": "GitHub Action that replaces links with buttons",
+     "main": "dist/index.js",
+     "scripts": {
+       "clean": "rimraf dist",
+       "build": "npm run clean && tsc -p . && ncc build src/index.ts -o dist",
+       "format": "prettier --write '**/*.ts'",
+       "format-check": "prettier --check '**/*.ts'",
+       "lint": "eslint src/**/*.ts",
+       "test": "jest",
+       "licensed-check": "src/misc/licensed-check.sh",
+       "licensed-generate": "src/misc/licensed-generate.sh"
+     },
+     "repository": {
+       "type": "git",
+       "url": "git+https://github.com/kingting/link-to-button.git"
+     },
+     "author": "King Ting",
+     "license": "MIT",
+     "bugs": {
+       "url": "https://github.com/kingting/link-to-button/issues"
+     },
+     "homepage": "https://github.com/kingting/link-to-button#readme",
+     "dependencies": {
+       "@actions/core": "^1.10.1",
+       "dotenv": "^16.4.5"
+     },
+     "devDependencies": {
+       "typescript": "^5.4.5",
+       "@vercel/ncc": "^0.38.1",
+       "prettier": "^3.3.2",
+       "eslint": "^9.5.0",
+       "jest": "^29.7.0",
+       "@types/jest": "^29.5.12",
+       "ts-jest": "^29.1.5"
+     }
+   }
+   ```
+
+### Keeping Dependencies Updated
+
+Keeping your dependencies up-to-date is crucial for maintaining the security, performance, and compatibility of your project. Using `npm outdated`, you can easily identify which dependencies need updating.
+
+#### Checking for Outdated Packages
+
+1. **Run `npm outdated`:**
+   ```bash
+   npm outdated
+   ```
+
+   This command will display a list of packages that have newer versions available.
+
+#### Updating Dependencies
+
+You can update the dependencies manually or automatically:
+
+1. **Manually Update `package.json`:**
+   - Open `package.json` and update the versions of the outdated packages to their latest versions.
+   - Save the changes.
+
+2. **Automatically Update Packages:**
+   - Run `npm update` to update all packages to the latest version specified in the `package.json`:
+     ```bash
+     npm update
+     ```
+
+3. **Install Updated Packages:**
+   - After updating the `package.json` or running `npm update`, install the updated packages:
+     ```bash
+     npm install
+     ```
+
+### Compiling and Updating the Action
+
+1. **Compile TypeScript and Bundle with `ncc`:**
+   ```bash
+   npm run build
+   ```
+
+2. **Commit and Push the Changes:**
+   ```bash
+   git add .
+   git commit -m "Compile TypeScript and bundle with ncc"
+   git push origin main
+   ```
+
+### Checking the Latest Code to GitHub
+
+1. **Ensure all Changes are Committed:**
+   ```bash
+   git status
+   ```
+
+2. **Push the Changes to GitHub:**
+   ```bash
+   git push origin main
+   ```
+
+By following these steps, you ensure that your GitHub Action is properly configured using best practices. This includes setting up `package.json`, compiling the action using TypeScript and `ncc`, and pushing the latest code to GitHub. This approach helps maintain the robustness and reliability of your action.
 
 ## License
 
