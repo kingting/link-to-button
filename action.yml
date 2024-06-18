@@ -9,6 +9,10 @@ inputs:
     description: 'Path to the output file (e.g., index.md)'
     required: false
     default: 'index.md'
+  debug:
+    description: 'Enable debug logging'
+    required: false
+    default: 'false'
 runs:
   using: 'node20'
   main: 'dist/index.js'
