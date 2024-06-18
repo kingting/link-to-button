@@ -130,13 +130,13 @@ function fetchAndDisplayScript(elementId, url, button) {
 
 1. **Create `package.json`:**
    ```bash
-   npm init
+   yarn init
    ```
 
 2. **Install Dependencies:**
    ```bash
-   npm install --save-dev typescript @vercel/ncc prettier eslint jest @types/jest ts-jest
-   npm install @actions/core dotenv
+   yarn add --dev typescript @vercel/ncc prettier eslint jest @types/jest ts-jest
+   yarn add @actions/core dotenv
    ```
 
 3. **Configure `package.json`:**
@@ -148,7 +148,7 @@ function fetchAndDisplayScript(elementId, url, button) {
      "main": "dist/index.js",
      "scripts": {
        "clean": "rimraf dist",
-       "build": "npm run clean && tsc -p . && ncc build src/index.ts -o dist",
+       "build": "yarn clean && tsc -p . && ncc build src/index.ts -o dist",
        "format": "prettier --write '**/*.ts'",
        "format-check": "prettier --check '**/*.ts'",
        "lint": "eslint src/**/*.ts",
@@ -177,6 +177,9 @@ function fetchAndDisplayScript(elementId, url, button) {
        "eslint": "^9.5.0",
        "jest": "^29.7.0",
        "@types/jest": "^29.5.12",
+       "lru-cache": "^10.2.2",
+       "npm-force-resolutions": "^0.0.10",
+       "rimraf": "^5.0.7",
        "ts-jest": "^29.1.5"
      }
    }
@@ -188,9 +191,9 @@ Keeping your dependencies up-to-date is crucial for maintaining the security, pe
 
 #### Checking for Outdated Packages
 
-1. **Run `npm outdated`:**
+1. **Run `yarn outdated`:**
    ```bash
-   npm outdated
+   yarn outdated
    ```
 
    This command will display a list of packages that have newer versions available.
@@ -204,22 +207,22 @@ You can update the dependencies manually or automatically:
    - Save the changes.
 
 2. **Automatically Update Packages:**
-   - Run `npm update` to update all packages to the latest version specified in the `package.json`:
+   - Run `yarn update` to update all packages to the latest version specified in the `package.json`:
      ```bash
-     npm update
+     yarn update
      ```
 
 3. **Install Updated Packages:**
    - After updating the `package.json` or running `npm update`, install the updated packages:
      ```bash
-     npm install
+     yarn install
      ```
 
 ### Compiling and Updating the Action
 
 1. **Compile TypeScript and Bundle with `ncc`:**
    ```bash
-   npm run build
+   yarn build
    ```
 
 2. **Commit and Push the Changes:**
