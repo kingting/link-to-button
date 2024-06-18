@@ -8,14 +8,15 @@ const outputFilePath = core.getInput('output-file') || 'index.md';
 if (!fs.existsSync(inputFilePath)) {
   core.setFailed(`Input file ${inputFilePath} does not exist`);
 } else {
-  const content = fs.readFileSync(inputFilePath, 'utf8');
+  let content = fs.readFileSync(inputFilePath, 'utf8');
   const startMarker = '<!-- Start Button -->';
   const endMarker = '<!-- End Button -->';
 
-  const startIndex = content.indexOf(startMarker);
-  const endIndex = content.indexOf(endMarker);
+  // Changes start here
+  let startIndex = content.indexOf(startMarker);
+  let endIndex = content.indexOf(endMarker);
 
-  if (startIndex !== -1 && endIndex !== -1) {
+  while (startIndex !== -1 && endIndex !== -1) {
     const sectionContent = content.slice(startIndex + startMarker.length, endIndex).trim();
     const regex = /\[(.*?)\]\((.*?)\)/;
     const match = sectionContent.match(regex);
@@ -30,12 +31,15 @@ if (!fs.existsSync(inputFilePath)) {
 <div id="script-content-${scriptName}" style="display:none; white-space: pre-wrap;"></div>
 `;
 
-      const newContent = content.slice(0, startIndex) + buttonHtml + content.slice(endIndex + endMarker.length);
-      fs.writeFileSync(outputFilePath, newContent, 'utf8');
-      core.setOutput('new-content-path', outputFilePath);
+      content = content.slice(0, startIndex) + buttonHtml + content.slice(endIndex + endMarker.length);
     }
-  } else {
-    core.info("Markers not found in the content.");
+
+    startIndex = content.indexOf(startMarker);
+    endIndex = content.indexOf(endMarker);
   }
+  // Changes end here
+
+  fs.writeFileSync(outputFilePath, content, 'utf8');
+  core.setOutput('new-content-path', outputFilePath);
 }
 
