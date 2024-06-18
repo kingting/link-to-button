@@ -36,6 +36,7 @@ jobs:
       with:
         input-file: 'README.md'
         output-file: 'index.md'
+        debug: 'true'
     
     # Work in GitHub Pages
     - name: Enable Button Functionality
