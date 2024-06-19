@@ -58,7 +58,8 @@ if (!fs.existsSync(inputFilePath)) {
       // Debug: Log new content after replacement
       logDebug('New content after replacement:\n' + content + '\n');
     }
-
+    // Update indices for next iteration
+    // Adding startMarker.length to ensure we skip past the current marker
     startIndex = content.indexOf(startMarker, startIndex + startMarker.length);
     endIndex = content.indexOf(endMarker, startIndex);
     // Debug: Log updated indices for next iteration
