@@ -10,6 +10,30 @@
 - Useful for interactive GitHub Pages documentation.
 - Simple setup and usage.
 
+### Example Link Conversion
+
+Here is an example of how the action converts a simple text link to a button, including how it looks before and after conversion.
+
+#### Before Conversion
+
+**Marked Link in README.md**:
+
+```markdown
+<!-- Start Button -->
+[script.js](https://github.com/kingting/link-to-button/blob/main/.github/scripts/script.js)
+<!-- End Button -->
+```
+
+**View on GitHub Repo**:
+
+[script.js](https://github.com/kingting/link-to-button/blob/main/.github/scripts/script.js)
+
+#### After Conversion
+
+**View on GitHub Pages**:
+
+![Button After Conversion](https://github.com/kingting/link-to-button/blob/main/show-script-js.png)
+
 ## Usage
 
 ### Pre-requisites
