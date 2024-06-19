@@ -25,108 +25,22 @@ Ensure you have a repository set up with the necessary files, including `README.
 
 Here is an example workflow (`.github/workflows/main.yml`) to demonstrate how to use this action:
 
-```yaml
-name: Convert Links to Buttons
+<!-- Start Button -->
+[.github/workflows/test.yml](https://github.com/kingting/gh-pages/blob/main/.github/workflows/test.yml)
+<!-- End Button -->
 
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Create a sample README file
-        run: |
-          echo "# Sample Project" > README.md
-          echo "" >> README.md
-          echo "This is a sample project to demonstrate the link-to-button GitHub Action." >> README.md
-          echo "" >> README.md
-          echo "<!-- Start Button -->" >> README.md
-          echo "[Run Script](https://github.com/user/repo/blob/main/script.sh)" >> README.md
-          echo "<!-- End Button -->" >> README.md
-
-      - name: Run Link-to-Button Action
-        uses: kingting/link-to-button@v0.9
-        with:
-          input-file: 'README.md'
-          output-file: 'index.md'
-
-      - name: Enable Button Functionality
-        run: |
-          echo "<script>" >> index.md
-          cat dist/script.js >> index.md
-          echo "</script>" >> index.md
-
-      - name: Print Updated Content
-        run: cat index.md
-```
 ### Using `script.js`
 
 To make the buttons functional, the workflow includes steps to append the content of `script.js` to your output file (`index.md`).
 
-### Example
-
-Here is an example of how to structure your markdown file to use this action:
-
-**Before:**
-
-```markdown
-# Sample Project
-
-This is a sample project to demonstrate the link-to-button GitHub Action.
-
 <!-- Start Button -->
-[Run Script](https://github.com/user/repo/blob/main/script.sh)
+[.github/scripts/scripts](https://github.com/kingting/gh-pages/blob/main/.github/scripts/script.js)
 <!-- End Button -->
-```
 
-**After:**
-
-The action will convert the marked link to a button and append the script content like this:
-
-```html
-# Sample Project
-
-This is a sample project to demonstrate the link-to-button GitHub Action.
-
-<span class="page-button-container">
-  <button data-script-name="Run Script" onclick="fetchAndDisplayScript('script-content-Run Script', 'https://raw.githubusercontent.com/user/repo/main/script.sh', this)" class="page-button">Show Run Script</button>
-</span>
-<div id="script-content-Run Script" style="display:none; white-space: pre-wrap;"></div>
-
-<script>
-function fetchAndDisplayScript(elementId, url, button) {
-  fetch(url)
-    .then(response => response.text())
-    .then(data => {
-      const element = document.getElementById(elementId);
-      element.style.display = 'block';
-      element.textContent = data;
-      button.disabled = true;
-    })
-    .catch(error => {
-      console.error('Error fetching the script:', error);
-    });
-}
-</script>
-```
 ## Maintaining the Action Repository
 
 ### Setting Up `package.json`
+
 
 1. **Create `package.json`:**
    ```bash
@@ -139,51 +53,11 @@ function fetchAndDisplayScript(elementId, url, button) {
    yarn add @actions/core dotenv
    ```
 
-3. **Configure `package.json`:**
-   ```json
-   {
-     "name": "link-to-button",
-     "version": "1.0.0",
-     "description": "GitHub Action that replaces links with buttons",
-     "main": "dist/index.js",
-     "scripts": {
-       "clean": "rimraf dist",
-       "build": "yarn clean && tsc -p . && ncc build src/index.ts -o dist",
-       "format": "prettier --write '**/*.ts'",
-       "format-check": "prettier --check '**/*.ts'",
-       "lint": "eslint src/**/*.ts",
-       "test": "jest",
-       "licensed-check": "src/misc/licensed-check.sh",
-       "licensed-generate": "src/misc/licensed-generate.sh"
-     },
-     "repository": {
-       "type": "git",
-       "url": "git+https://github.com/kingting/link-to-button.git"
-     },
-     "author": "King Ting",
-     "license": "MIT",
-     "bugs": {
-       "url": "https://github.com/kingting/link-to-button/issues"
-     },
-     "homepage": "https://github.com/kingting/link-to-button#readme",
-     "dependencies": {
-       "@actions/core": "^1.10.1",
-       "dotenv": "^16.4.5"
-     },
-     "devDependencies": {
-       "typescript": "^5.4.5",
-       "@vercel/ncc": "^0.38.1",
-       "prettier": "^3.3.2",
-       "eslint": "^9.5.0",
-       "jest": "^29.7.0",
-       "@types/jest": "^29.5.12",
-       "lru-cache": "^10.2.2",
-       "npm-force-resolutions": "^0.0.10",
-       "rimraf": "^5.0.7",
-       "ts-jest": "^29.1.5"
-     }
-   }
-   ```
+3. **Example `package.json`:**
+
+<!-- Start Button -->
+[package.json](https://github.com/kingting/gh-pages/blob/main/package.json)
+<!-- End Button -->
 
 ### Keeping Dependencies Updated
 
