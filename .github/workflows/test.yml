@@ -42,7 +42,7 @@ jobs:
     - name: Enable Button Functionality
       run: |
         echo "<script>" >> index.md
-        cat dist/script.js >> index.md
+        cat .github/scripts/script.js >> index.md
         echo "</script>" >> index.md
 
     - name: Print Updated Content

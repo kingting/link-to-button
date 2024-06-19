@@ -2,13 +2,23 @@ import * as core from '@actions/core';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const inputFilePath = core.getInput('input-file') || 'README.md';
-const outputFilePath = core.getInput('output-file') || 'index.md';
-const debug = core.getInput('debug') === 'true';
+// Check if running in GitHub Actions or locally
+const isGitHubActions = !!process.env.GITHUB_ACTIONS;
+
+// Function to get input, depending on the environment
+const getInput = (name: string, defaultValue: string): string => {
+  return isGitHubActions ? core.getInput(name) || defaultValue : process.env[name.toUpperCase().replace(/-/g, '_')] || defaultValue;
+};
+
+const inputFilePath = getInput('input-file', 'README.md');
+const outputFilePath = getInput('output-file', 'index.md');
+const debug = getInput('debug', 'false') === 'true';
 
 function logDebug(message: string) {
-  if (debug) {
+  if (isGitHubActions) {
     core.debug(message);
+  } else {
+    console.debug(message);
   }
 }
 
@@ -20,8 +30,7 @@ if (!fs.existsSync(inputFilePath)) {
   const endMarker = '<!-- End Button -->';
 
   // Debug: Log initial content
-  logDebug('Initial content:');
-  logDebug(content);
+  logDebug('Initial content:\n' + content + '\n');
 
   let startIndex = content.indexOf(startMarker);
   let endIndex = content.indexOf(endMarker);
@@ -31,7 +40,7 @@ if (!fs.existsSync(inputFilePath)) {
     logDebug(`Start index: ${startIndex}`);
     logDebug(`End index: ${endIndex}`);
     const sectionContent = content.slice(startIndex + startMarker.length, endIndex).trim();
-    logDebug(`Section content: ${sectionContent}`);
+    logDebug(`Section content:\n${sectionContent}\n`);
     const regex = /\[(.*?)\]\((.*?)\)/;
     const match = sectionContent.match(regex);
 
@@ -47,8 +56,7 @@ if (!fs.existsSync(inputFilePath)) {
 
       content = content.slice(0, startIndex) + buttonHtml + content.slice(endIndex + endMarker.length);
       // Debug: Log new content after replacement
-      logDebug('New content after replacement:');
-      logDebug(content);
+      logDebug('New content after replacement:\n' + content + '\n');
     }
 
     startIndex = content.indexOf(startMarker, startIndex + startMarker.length);
