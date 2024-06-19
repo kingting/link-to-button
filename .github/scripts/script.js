@@ -1,4 +1,3 @@
-<script>
 function escapeHtml(unsafe) {
     return unsafe
         .replace(/&/g, "&amp;")
@@ -37,5 +36,4 @@ function fetchAndDisplayScript(containerId, scriptUrl, button) {
     button.textContent = "Show " + button.getAttribute('data-script-name');
   }
 }
-</script>
 
