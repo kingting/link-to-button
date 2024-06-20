@@ -1,10 +1,8 @@
 # Step to test locally
 yarn build
-export INPUT_FILE=.github/README.md
-export OUTPUT_FILE=index.md
-export DEBUG=true
 node dist/index.js
-# Sample Project
+
+# Sample README.md for testing only
 This is a sample project to demonstrate the link-to-button GitHub Action.
 
 First link

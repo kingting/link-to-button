@@ -13,7 +13,7 @@
 
 ### Example Link Conversion
 
-Here is an example of how the action converts a simple text link to a button, including how it looks before and after conversion.
+This example demostrates how the action converts a simple text link to a button, showing both the before and after states.
 
 #### Before Conversion
 
@@ -29,7 +29,7 @@ Here is an example of how the action converts a simple text link to a button, in
 
 [script.js](https://github.com/kingting/link-to-button/blob/main/.github/scripts/script.js)
 
-#### After Conversion
+#### After Conversion and publishing to GitHub Pages
 
 **View on GitHub Pages**:
 
@@ -39,7 +39,7 @@ Here is an example of how the action converts a simple text link to a button, in
 
 ![Button Hide](https://github.com/kingting/link-to-button/blob/main/docs/images/hide-script-js.png)
 
-## Usage
+## Usage in GitHub Actions Workflow
 
 ### Pre-requisites
 
@@ -68,7 +68,7 @@ To make the buttons functional, the workflow includes steps to append the conten
 
 ### Local Testing
 
-To test the action locally, you can set up environment variables (`.env`) and run the script using Node.js. Here are the steps:
+To test the action locally, ensure that all the necessary JavaScript dependencies are installed, then set up environment variables (.env) and run the script using Node.js. Here are the steps:
 
 ```bash
 yarn build 
