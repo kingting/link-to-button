@@ -18,23 +18,11 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
-    - name: Create a sample README file
+    # Prepare a test README.md file
+    - name: Prepare a test README.md file
       run: |
-        echo "# Sample Project" > README.md
-        echo "" >> README.md
-        echo "This is a sample project to demonstrate the link-to-button GitHub Action." >> README.md
-        echo "" >> README.md
-        echo "<!-- Start Button -->" >> README.md
-        echo "[script.sh](https://github.com/user/repo/blob/main/script.sh)" >> README.md
-        echo "<!-- End Button -->" >> README.md
-        echo "<!-- Start Button -->" >> README.md
-        echo "[script2.sh](https://github.com/user/repo/blob/main/script2.sh)" >> README.md
-        echo "<!-- End Button -->" >> README.md
-
-    # Output README.md 
-    - name: Print README.md
-      run: |
-        cat README.md
+        cat .github/test/README.md
+        cp .github/test/README.md README.md
 
     - name: Run Link-to-Button Action
       uses: ./

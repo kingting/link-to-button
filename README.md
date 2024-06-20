@@ -7,6 +7,7 @@
 ## Features
 
 - Converts specified links within a file to buttons.
+- **Exclude Links from Conversion**: You can prevent specific links from being converted to buttons by wrapping them in a Markdown code block ` ```markdown ````. This is particularly useful for documentation purposes.
 - Useful for interactive GitHub Pages documentation.
 - Simple setup and usage.
 
@@ -32,11 +33,11 @@ Here is an example of how the action converts a simple text link to a button, in
 
 **View on GitHub Pages**:
 
-![Button Show](https://github.com/kingting/link-to-button/blob/main/show-script-js.png)
+![Button Show](https://github.com/kingting/link-to-button/blob/main/docs/images/show-script-js.png)
 
 **View after Pressing the Button**:
 
-![Button Hide](https://github.com/kingting/link-to-button/blob/main/hide-script-js.png)
+![Button Hide](https://github.com/kingting/link-to-button/blob/main/docs/images/hide-script-js.png)
 
 ## Usage
 
@@ -64,6 +65,15 @@ To make the buttons functional, the workflow includes steps to append the conten
 <!-- Start Button -->
 [.github/scripts/scripts](https://github.com/kingting/gh-pages/blob/main/.github/scripts/script.js)
 <!-- End Button -->
+
+### Local Testing
+
+To test the action locally, you can set up environment variables (`.env`) and run the script using Node.js. Here are the steps:
+
+```bash
+yarn build 
+node dist/index.js
+```
 
 ## Maintaining the Action Repository
 
