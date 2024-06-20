@@ -55,7 +55,7 @@ Ensure you have a repository set up with the necessary files, including `README.
 Here is an example workflow (`.github/workflows/main.yml`) to demonstrate how to use this action:
 
 <!-- Start Button -->
-[.github/workflows/test.yml](https://github.com/kingting/gh-pages/blob/main/.github/workflows/test.yml)
+[.github/workflows/main.yml](https://github.com/kingting/gh-pages/blob/main/.github/workflows/main.yml)
 <!-- End Button -->
 
 ### Using `script.js`
