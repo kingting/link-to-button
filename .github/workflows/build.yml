@@ -17,11 +17,11 @@ jobs:
           chmod +x .github/scripts/generate-config.sh
           .github/scripts/generate-config.sh
         env:
-          REPO_URL: "https://github.com/${{ github.repository_owner }}/${{ github.repository }}"
+          REPO_URL: "https://github.com/${{ github.repository }}"
           OWNER_URL: "https://github.com/${{ github.repository_owner }}"
-          REPO_NAME: "${{ github.repository }}"
+          REPO_NAME: "${{ github.event.repository.name }}"
           OWNER_NAME: "${{ github.repository_owner }}"
-          BASEURL: "/${{ github.repository }}"
+          BASEURL: "/${{ github.event.repository.name }}"
 
       - name: Printout _config.yml 
         run: |
