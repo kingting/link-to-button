@@ -15,7 +15,7 @@ jobs:
       - name: Generate _config.yml
         run: |
           chmod +x .github/scripts/generate-config.sh
-          .github/scripts/generate-config.sh
+          .github/scripts/generate_config.sh
         env:
           REPO_URL: "https://github.com/${{ github.repository_owner }}/${{ github.repository }}"
           OWNER_URL: "https://github.com/${{ github.repository_owner }}"
@@ -48,4 +48,14 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-
+          
+      - name: Debug Jekyll Build
+        run: |
+            echo "Listing files in the root directory:"
+            ls -al
+            echo "Listing files in the _site directory:"
+            ls -al _site
+  
+      - name: Upload artifact
+          # Automatically uploads an artifact from the './_site' directory by default
+          uses: actions/upload-pages-artifact@v3
