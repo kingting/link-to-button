@@ -15,7 +15,7 @@ jobs:
       - name: Generate _config.yml
         run: |
           chmod +x .github/scripts/generate-config.sh
-          .github/scripts/generate_config.sh
+          .github/scripts/generate-config.sh
         env:
           REPO_URL: "https://github.com/${{ github.repository_owner }}/${{ github.repository }}"
           OWNER_URL: "https://github.com/${{ github.repository_owner }}"
