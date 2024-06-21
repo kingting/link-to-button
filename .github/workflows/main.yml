@@ -19,15 +19,15 @@ permissions:
 jobs:
   test:
     if: always() 
-    uses: ./.github/workflows/includes/test.yml
+    uses: ./.github/workflows/test.yml
 
   build:
     needs: test
     if: ${{ needs.test.result == 'success' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/feature/')) }}
-    uses: ./.github/workflows/includes/build.yml
+    uses: ./.github/workflows/build.yml
 
   deploy:
     needs: build
     if: ${{ needs.build.result == 'success' && github.ref == 'refs/heads/main' }}
-    uses: ./.github/workflows/includes/deploy.yml
+    uses: ./.github/workflows/deploy.yml
   
