@@ -1,11 +1,7 @@
 name: Test Workflow
-run-name: ${{ github.actor }} is a Test Workflow
 
 on:
-  push:
-    branches:
-      - feature/*
-      - main
+  workflow_call:
 
 jobs:
   test:

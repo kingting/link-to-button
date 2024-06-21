@@ -1,10 +1,7 @@
 name: Build Workflow
 
 on:
-  workflow_run:
-    workflows: ["Test Workflow"]
-    types:
-      - completed
+  workflow_call:
 
 jobs:
   build:
