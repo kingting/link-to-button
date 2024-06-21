@@ -27,7 +27,7 @@ jobs:
           BASEURL: "/${{ github.repository }}"
 
       - name: Replace links with display button in README.md
-        uses: kingting/link-to-button@v1.0.0
+        uses: ./
         with:
           input-file: 'README.md'
           output-file: 'README.md'

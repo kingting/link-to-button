@@ -1,9 +1,10 @@
-name: Test Link-to-Button Action
+name: Test Workflow
 
 on:
   push:
     branches:
       - feature/*
+      - main
 
 jobs:
   test:
