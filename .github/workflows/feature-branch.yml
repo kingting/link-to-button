@@ -1,6 +1,9 @@
 name: Test Link-to-Button Action
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - feature/*
 
 jobs:
   build:
