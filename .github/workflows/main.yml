@@ -30,4 +30,3 @@ jobs:
     # needs: build
     #if: ${{ needs.build.result == 'success' && github.ref == 'refs/heads/main' }}
     uses: ./.github/workflows/deploy.yml
-  
