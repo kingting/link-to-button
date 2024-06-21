@@ -1,0 +1,37 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// Custom styles
+body {
+    background-color: #f0f0f0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: #007acc;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+/* Default state for links and buttons */
+.repo-link {
+  display: inline; /* Links are shown by default */
+}
+
+.page-button {
+  display: none; /* Buttons are hidden by default */
+}
+
+/* Styles specific to GitHub Pages (when custom CSS is applied) */
+.page-button {
+  display: inline-block; /* Show buttons on GitHub Pages */
+}
+
+.repo-link {
+  display: none; /* Hide links on GitHub Pages */
+}
+
