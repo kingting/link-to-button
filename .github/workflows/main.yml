@@ -24,9 +24,4 @@ jobs:
   build:
     needs: test
     #if: ${{ needs.test.result == 'success' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/feature/')) }}
-    uses: ./.github/workflows/build.yml
-
-#  deploy:
-#    needs: build
-#    #if: ${{ needs.build.result == 'success' && github.ref == 'refs/heads/main' }}
-#    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/build-deploy.yml
