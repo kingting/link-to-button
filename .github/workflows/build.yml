@@ -23,6 +23,10 @@ jobs:
           OWNER_NAME: "${{ github.repository_owner }}"
           BASEURL: "/${{ github.repository }}"
 
+      - name: Printout _config.yml 
+        run: |
+          cat _config.yml
+
       - name: Replace links with display button in README.md
         uses: ./
         with:
