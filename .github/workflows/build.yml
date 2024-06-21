@@ -1,0 +1,54 @@
+name: Build Workflow
+
+on:
+  workflow_run:
+    workflows: ["Test Workflow"]
+    types:
+      - completed
+
+jobs:
+  build:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Generate _config.yml
+        run: |
+          chmod +x .github/scripts/generate_config.sh
+          .github/scripts/generate_config.sh
+        env:
+          REPO_URL: "https://github.com/${{ github.repository_owner }}/${{ github.repository }}"
+          OWNER_URL: "https://github.com/${{ github.repository_owner }}"
+          REPO_NAME: "${{ github.repository }}"
+          OWNER_NAME: "${{ github.repository_owner }}"
+          BASEURL: "/${{ github.repository }}"
+
+      - name: Replace links with display button in README.md
+        uses: kingting/link-to-button@v1.0.0
+        with:
+          input-file: 'README.md'
+          output-file: 'README.md'
+          debug: true
+
+      - name: Initialise repo to allow Jekyll to build 
+        run: |
+          chmod +x .github/scripts/init-jekyll.sh
+          .github/scripts/init-jekyll.sh
+          # Debugging the final output
+          cat index.md
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          cache-version: 0
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
