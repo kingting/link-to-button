@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 #----------------------------------------------------------------------------------
 # Variables for _config.yml from environment variables
 #----------------------------------------------------------------------------------
@@ -16,7 +17,7 @@ title: Technical Insight
 description: A precise guide providing practical, tried and tested examples.
 baseurl: ${BASEURL} # the subpath of your site, e.g. /blog
 show_downloads: true
-url: "${REPO_URL}.github.io" # the base hostname & protocol for your site
+url: "https://${OWNER_NAME}.github.io" # the base hostname & protocol for your site
 github:
   is_project_page: true
   repository_url: ${REPO_URL}
