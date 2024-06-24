@@ -33,11 +33,11 @@ This example demostrates how the action converts a simple text link to a button,
 
 **View on GitHub Pages**:
 
-![Button Show](https://github.com/kingting/link-to-button/blob/main/docs/images/show-script-js.png)
+![Button Show](https://raw.githubusercontent.com/kingting/link-to-button/main/docs/images/show-script-js.png)
 
 **View after Pressing the Button**:
 
-![Button Hide](https://github.com/kingting/link-to-button/blob/main/docs/images/hide-script-js.png)
+![Button Hide](https://raw.githubusercontent.com/kingting/link-to-button/main/docs/images/hide-script-js.png)
 
 ## Usage in GitHub Actions Workflow
 
