@@ -94,7 +94,7 @@ node dist/index.js
 3. **Example `package.json`:**
 
 <!-- Start Button -->
-[package.json](https://github.com/kingting/gh-pages/blob/main/package.json)
+[package.json](https://github.com/kingting/link-to-button/blob/main/package.json)
 <!-- End Button -->
 
 ### Keeping Dependencies Updated
