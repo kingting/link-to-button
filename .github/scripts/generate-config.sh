@@ -1,5 +1,16 @@
 #!/bin/bash
 set -x
+
+#----------------------------------------------------------------------------------
+# Extract title from README.md
+#----------------------------------------------------------------------------------
+# Extract the first markdown title (e.g., # Title)
+readme_title=$(grep -m 1 '^# ' README.md | sed 's/^# //')
+
+# Fallback title if no title is found
+if [ -z "$readme_title" ]; then
+  readme_title="Title not found - please create a title # Title"
+fi
 #----------------------------------------------------------------------------------
 # Variables for _config.yml from environment variables
 #----------------------------------------------------------------------------------
@@ -13,7 +24,7 @@ BASEURL=${BASEURL:-"/link-to-button"}
 # Generate _config.yml
 #----------------------------------------------------------------------------------
 cat <<EOF > _config.yml
-title: Technical Insight
+title: ${readme_title}
 description: A precise guide providing practical, tried and tested examples.
 baseurl: ${BASEURL} # the subpath of your site, e.g. /blog
 show_downloads: true
@@ -27,7 +38,7 @@ github:
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-cayman
+remote_theme: pages-themes/architect@v0.2.0
 
 plugins:
   - jekyll-feed
