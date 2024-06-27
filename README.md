@@ -67,7 +67,7 @@ To make the buttons functional, the workflow includes steps to append the conten
 <!-- End Button -->
 
 ### Local Testing
-#### Copy README.md to index.md and Convert links to buttons
+#### Copy README.md to index.md and convert links to buttons
 
 To test the action locally, ensure that all the necessary JavaScript dependencies are installed, then set up environment variables (.env) and run the script using Node.js. Here are the steps:
 
