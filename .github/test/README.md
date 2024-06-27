@@ -1,7 +1,3 @@
-# Step to test locally
-yarn build
-node dist/index.js
-
 # Sample README.md for testing only
 This is a sample project to demonstrate the link-to-button GitHub Action.
 

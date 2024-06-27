@@ -29,6 +29,7 @@ mv temp_index.md index.md
 #----------------------------------------------------------------------------------
 # Include javascript 
 #----------------------------------------------------------------------------------
+echo "" >> index.md
 echo "{% raw %}"  >> index.md
 echo "<script>" >> index.md
 cat .github/scripts/script.js >> index.md

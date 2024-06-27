@@ -66,29 +66,14 @@ To make the buttons functional, the workflow includes steps to append the conten
 [.github/scripts/scripts.js](https://github.com/kingting/link-to-button/blob/main/.github/scripts/script.js)
 <!-- End Button -->
 
-### Local Testing
-#### Copy README.md to index.md and convert links to buttons
+## Local Testing
 
-To test the action locally, ensure that all the necessary JavaScript dependencies are installed, then set up environment variables (.env) and run the script using Node.js. Here are the steps:
-
-```bash
-yarn install
-yarn build 
-node dist/index.js
-```
-After running the script, verify that index.md has been created and that all links have been successfully converted to buttons.
-
-#### Make index.md Publishable as GitHub Pages
-
-To prepare index.md for publication on GitHub Pages, follow these steps:
+To test the action locally, ensure that all the necessary JavaScript dependencies are installed, and environment variables [.env](https://github.com/kingting/link-to-button/blob/main/.env) are setup.
 
 ```bash
-./.github/scripts/generate-config.sh
-./.github/scripts/init-jekyll.sh
-bundle exec jekyll build --baseurl="/link-to-button"
-rm index.md
-bundle exec jekyll serve --baseurl="/link-to-button"
+./.github/test/local.sh
 ```
+
 To view the site locally, open your web browser and navigate to the following URL:
 ```
 http://localhost:4000/link-to-button/
