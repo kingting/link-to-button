@@ -35,3 +35,26 @@ h1, h2, h3 {
   display: none; /* Hide links on GitHub Pages */
 }
 
+$primary-color: #333;
+$secondary-color: #f0f0f0;
+
+#toc {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin: 0.5em 0;
+
+    &.tag-h1 {
+      font-weight: bold;
+    }
+
+    &.tag-h2 {
+      margin-left: 1em;
+    }
+
+    &.tag-h3 {
+      margin-left: 2em;
+    }
+  }
+}
