@@ -1,25 +1,30 @@
 #!/bin/bash
+# Check if index.md exists
+if [ ! -f index.md ]; then
+  echo "index.md not found!"
+  exit 1
+fi
 #----------------------------------------------------------------------------------
-# Extract title from README.md
+# Extract title from index.md
 #----------------------------------------------------------------------------------
 # Extract the first markdown title (e.g., # Title)
-readme_title=$(grep -m 1 '^# ' README.md | sed 's/^# //')
+readme_title=$(grep -m 1 '^# ' index.md | sed 's/^# //')
 
 # Fallback title if no title is found
 if [ -z "$readme_title" ]; then
   readme_title="Title not found - please create a title # Title"
 fi
 
-#----------------------------------------------------------------------------------
-# Copy README.md to index.md with front matter
-#----------------------------------------------------------------------------------
-cat <<EOF > index.md
+# Create a temporary file with the new content
+cat <<EOF > temp_index.md
 ---
 layout: default
 title: $readme_title
 ---
 EOF
-cat README.md >> index.md
+
+cat index.md >> temp_index.md
+mv temp_index.md index.md
 
 #----------------------------------------------------------------------------------
 # Include javascript 
