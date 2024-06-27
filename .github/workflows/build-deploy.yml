@@ -23,7 +23,7 @@ jobs:
           OWNER_NAME: "${{ github.repository_owner }}"
           BASEURL: "/${{ github.event.repository.name }}"
 
-      - name: Printout _config.yml 
+      - name: _config.yml created by generate-config.sh
         run: |
           cat _config.yml
 
@@ -31,8 +31,12 @@ jobs:
         uses: ./
         with:
           input-file: 'README.md'
-          output-file: 'README.md'
+          output-file: 'index.md'
           debug: true
+
+      - name: index.md after links to buttons conversion 
+        run: |
+          cat index.md 
 
       - name: Initialise repo to allow Jekyll to build 
         run: |
