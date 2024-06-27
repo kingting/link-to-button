@@ -63,7 +63,7 @@ Here is an example workflow (`.github/workflows/main.yml`) to demonstrate how to
 To make the buttons functional, the workflow includes steps to append the content of `script.js` to your output file (`index.md`).
 
 <!-- Start Button -->
-[.github/scripts/scripts](https://github.com/kingting/link-to-button/blob/main/.github/scripts/script.js)
+[.github/scripts/scripts.js](https://github.com/kingting/link-to-button/blob/main/.github/scripts/script.js)
 <!-- End Button -->
 
 ### Local Testing
