@@ -38,7 +38,8 @@ github:
 
 # Build settings
 markdown: kramdown
-remote_theme: pages-themes/architect@v0.2.0
+#remote_theme: pages-themes/architect@v0.2.0
+remote_theme: pages-themes/cayman@v0.2.0
 
 plugins:
   - jekyll-feed
